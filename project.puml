@@ -1,0 +1,159 @@
+@startuml
+
+abstract class APlayable{
+    -int _currentHealth
+    -int _defaultHealth
+    -int _maxHealth
+
+    #int getHeal()
+    #void alterHealth()
+    #void updateMaxHealth(int health)
+    +void heal(int health)
+}
+
+class Player {
+    -std::vector<ACard> _hands
+    -std::vector<ACard> _board
+    -std::vector<ACard> _deck
+    -std::vector<ACard> _played
+    -std::map<std::string, int> _variables
+    -std::vector<ACard> _secrets
+    -AHeroPower & _heroPower
+    -AWeapons *_weapons
+    -int _maxMana
+    -int _currentMana
+
+    +void draw()
+    +void draw(int nb)
+
+    +int getVariable(std::string &key)
+    +void updateVariable(std::string &key, int nb)
+    +void replaceVariableValue(std::string &key, int nb)
+    +void resetVariable(std::string &key)
+    +void improveMana(int nb)
+    +void setMana(int nb)
+}
+
+abstract class ACard {
+    -int _currentCost
+    -int _defaultCost
+    -Target _target
+    #int _id
+    #std::string _name
+    #Class _membership
+
+    #void updateCost(int cost)
+    #void alterCost(int factor)
+    #void updateTarget(Target target)
+    #bool requirement()
+    +int getId()
+    +std::string getName()
+}
+
+abstract class ADamager {
+    #int _defaultDamage
+    #int _currentDamage
+
+    +bool attackRequirement()
+    +void attack(Playable target)
+}
+
+abstract class AMinion {
+    #bool _targelable
+    #bool _stealth
+    #bool _taunt
+    #bool _divineShield
+
+    #bool getTaunt()
+    #bool getStealth()
+    #bool getTargelable()
+    #bool getDivineShield()
+
+    #void setDivineShield(bool divineShield)
+    #void setTargelable(bool targelable)
+    #void setTaunt(bool taunt)
+    #void setStealth(bool stealth)
+
+    +void silence()
+    +void destroy()
+}
+
+abstract class ASpell {
+    +void run()
+    +void run(Playable target)
+}
+
+abstract class AWeapon {
+    #int _defaultDurability
+    #int _currentDurability
+}
+
+abstract class AHeroPower {
+    int _cost
+    Target _target
+}
+
+abstract class Game {
+    +Player _player1
+    +Player _player2
+    +int turn
+}
+
+note "All <b>minion</b> card \nextends from this class" as N1
+note "All <b>spell</b> card \nextends from this class" as N2
+note "All <b>Weapon</b> card \nextends from this class" as N3
+note "All <b>Hero power</b>\nextends from this class" as N4
+
+ADamager o-- AMinion
+ADamager o-- AWeapon
+
+APlayable o-- Player
+APlayable o-- AMinion
+
+ACard o-- AMinion
+ACard o-- ASpell
+
+AMinion -- N1
+ASpell -- N2
+AWeapon -- N3
+AHeroPower -- N4
+
+newpage
+
+enum Target {
+    ALL
+    PLAYER
+    OPPONENT_PLAYER
+    ALLIE_PLAYER
+    MINION
+    ALLIE_MINION
+    OPPONEMENT_MINION
+    NONE
+}
+
+enum Class {
+    NEUTRAL
+    DRUID
+    HUNTER
+    MAGE
+    PALADIN
+    PRIEST
+    ROGUE
+    SHAMAN
+    WARLOCK
+    WARRIOR
+    GRIMY_GOONS
+    KABAL
+    JADE_LOTUS
+}
+
+enum Type{
+    DRAGON
+    MECA
+    BEAST
+    MURLOC
+    DEMON
+
+}
+
+@enduml
