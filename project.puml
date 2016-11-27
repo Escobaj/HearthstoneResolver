@@ -1,14 +1,17 @@
 @startuml
 
-abstract class APlayable{
+abstract class ATargetable{
     -int _currentHealth
     -int _defaultHealth
     -int _maxHealth
 
-    #int getHeal()
-    #void alterHealth()
-    #void updateMaxHealth(int health)
-    +void heal(int health)
+    #int getDefaultHealth()
+    +void takeDamage(int factor)
+    +void boostHealth(int health)
+    +void heal(int factor)
+    +void fixedHealth(int newHealth)
+    +int getHealth()
+    +int getMaxHealth()
 }
 
 class Player {
@@ -30,7 +33,9 @@ class Player {
     +void updateVariable(std::string &key, int nb)
     +void replaceVariableValue(std::string &key, int nb)
     +void resetVariable(std::string &key)
-    +void improveMana(int nb)
+    +void updateManaMax(int nb)
+    +void updateMana(int nb)
+    +void setManaMax(int nb)
     +void setMana(int nb)
 }
 
@@ -38,24 +43,30 @@ abstract class ACard {
     -int _currentCost
     -int _defaultCost
     -Target _target
+    -int _order
     #int _id
     #std::string _name
     #Class _membership
 
     #void updateCost(int cost)
     #void alterCost(int factor)
-    #void updateTarget(Target target)
     #bool requirement()
     +int getId()
+    +int getOrder()
     +std::string getName()
 }
 
 abstract class ADamager {
     #int _defaultDamage
     #int _currentDamage
+    #int _attackMax
+    #int _attackRemain
+    #bool _canAttack
 
-    +bool attackRequirement()
+    -bool attackRequirement()
     +void attack(Playable target)
+    +void setAttackMax(int nb)
+    +void setCanAttack(bool canAttack)
 }
 
 abstract class AMinion {
@@ -63,6 +74,8 @@ abstract class AMinion {
     #bool _stealth
     #bool _taunt
     #bool _divineShield
+    #CardType _type
+
 
     #bool getTaunt()
     #bool getStealth()
@@ -86,17 +99,26 @@ abstract class ASpell {
 abstract class AWeapon {
     #int _defaultDurability
     #int _currentDurability
+
+    +int attack(Playable target)
+    +void AffectDurability(int factor)
 }
 
 abstract class AHeroPower {
-    int _cost
-    Target _target
+}
+
+class EventHandler{
+    -Game gameInstance
+    #vector<EventType> _queue
+    #vector<...> _...
+    +void ApplyEvent()
 }
 
 abstract class Game {
     +Player _player1
     +Player _player2
-    +int turn
+    +int _turn
+    +EventHandler _event
 }
 
 note "All <b>minion</b> card \nextends from this class" as N1
@@ -104,14 +126,17 @@ note "All <b>spell</b> card \nextends from this class" as N2
 note "All <b>Weapon</b> card \nextends from this class" as N3
 note "All <b>Hero power</b>\nextends from this class" as N4
 
-ADamager o-- AMinion
-ADamager o-- AWeapon
+ADamager <|-- AMinion
+ADamager <|-- AWeapon
 
-APlayable o-- Player
-APlayable o-- AMinion
 
-ACard o-- AMinion
-ACard o-- ASpell
+
+ATargetable <|-- Player
+ATargetable <|-- AMinion
+
+ACard <|-- ASpell
+ACard <|-- AHeroPower
+ACard <|-- ADamager
 
 AMinion -- N1
 ASpell -- N2
@@ -147,13 +172,20 @@ enum Class {
     JADE_LOTUS
 }
 
-enum Type{
+enum CardType{
     DRAGON
     MECA
     BEAST
     MURLOC
     DEMON
 
+}
+
+enum EventType{
+    DEATHRATLE
+    BATTLECRY
+    DEALDAMAGE
+    ...
 }
 
 @enduml
