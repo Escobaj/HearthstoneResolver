@@ -1,6 +1,6 @@
-#include <iostream>
+#include "Emulator/Core/Entities/Spell.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    Spell spell;
     return 0;
 }

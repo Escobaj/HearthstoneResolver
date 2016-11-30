@@ -1,5 +1,5 @@
 //
-// Created by escoba_j on 22/11/2016.
+// Created by escoba_j on 29/11/2016.
 //
 
 #ifndef HEARTHSTONERESOLVER_ASPELL_H
@@ -7,9 +7,10 @@
 
 #include "ACard.h"
 
-class ASpell : public ACard{
+class Spell : public ACard{
+
 public:
-    ASpell(unsigned int _cost, Class _class, Target _target, const String &_name);
+    State play(unsigned int order);
 
 };
 

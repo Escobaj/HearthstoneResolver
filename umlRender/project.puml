@@ -37,55 +37,58 @@ class Player {
     +void updateMana(int nb)
     +void setManaMax(int nb)
     +void setMana(int nb)
+    +void setDeck(std::vector<ACard &> deck)
+
 }
 
 abstract class ACard {
-    -int _currentCost
     -int _defaultCost
+    -int _beforeEventCost
+    -int _currentCost
     -Target _target
     -int _order
-    #int _id
-    #std::string _name
-    #Class _membership
+    -int _id
+    -std::string _name
+    -Class _membership
 
-    #void updateCost(int cost)
-    #void alterCost(int factor)
-    #bool requirement()
+    +State play(unsigned int order)
+    +void updateCost(int cost)
+    +void alterCost(int factor)
+    +bool requirement()
     +int getId()
     +int getOrder()
     +std::string getName()
 }
 
 abstract class ADamager {
-    #int _defaultDamage
-    #int _currentDamage
-    #int _attackMax
-    #int _attackRemain
-    #bool _canAttack
+    -int _defaultDamage
+    -int _currentDamage
+    -int _attackMax
+    -int _attackRemain
+    -bool _canAttack
 
-    -bool attackRequirement()
+    +rbool attackRequirement()
     +void attack(Playable target)
     +void setAttackMax(int nb)
     +void setCanAttack(bool canAttack)
 }
 
 abstract class AMinion {
-    #bool _targelable
-    #bool _stealth
-    #bool _taunt
-    #bool _divineShield
+    -bool _targelable
+    -bool _stealth
+    -bool _taunt
+    -bool _divineShield
     #CardType _type
 
+    +bool getTaunt()
+    +bool getStealth()
+    +bool getTargelable()
+    +bool getDivineShield()
 
-    #bool getTaunt()
-    #bool getStealth()
-    #bool getTargelable()
-    #bool getDivineShield()
-
-    #void setDivineShield(bool divineShield)
-    #void setTargelable(bool targelable)
-    #void setTaunt(bool taunt)
-    #void setStealth(bool stealth)
+    +void setDivineShield(bool divineShield)
+    +void setTargelable(bool targelable)
+    +void setTaunt(bool taunt)
+    +void setStealth(bool stealth)
 
     +void silence()
     +void destroy()
@@ -105,20 +108,9 @@ abstract class AWeapon {
 }
 
 abstract class AHeroPower {
-}
+    -int counterHeroPower
+    -int currentCounter
 
-class EventHandler{
-    -Game gameInstance
-    #vector<EventType> _queue
-    #vector<...> _...
-    +void ApplyEvent()
-}
-
-abstract class Game {
-    +Player _player1
-    +Player _player2
-    +int _turn
-    +EventHandler _event
 }
 
 note "All <b>minion</b> card \nextends from this class" as N1
@@ -178,7 +170,35 @@ enum CardType{
     BEAST
     MURLOC
     DEMON
+    PIRATES
+    TOTEM
+    GENERAL
+}
 
+enum State{
+    FORBIDDEN
+    TARGET_REQUIRED
+    SUCCESSFULL
+}
+
+newpage
+
+class EventHandler{
+    -Game gameInstance
+    -bool endGame
+    #vector<EventType> _queue
+    #vector<...> _...
+    +void ApplyEvent()
+    +void check()
+    +Player *isWin()
+}
+
+abstract class Game {
+    +Player _player1
+    +Player _player2
+    +int _turn
+    +EventHandler _event
+    +bool initFromFile(std::string &filename)
 }
 
 enum EventType{

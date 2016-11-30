@@ -1,0 +1,26 @@
+[{
+  "player1": {
+    "controller" : "ia",
+    "deck": [
+      {
+        "card": "DR BOOM",
+        "quantity": 1
+      },{
+        "card": "Mana Wyrm",
+        "quantity": 2
+      }
+    ]
+  },
+  "player2": {
+    "controller" : "player",
+    "deck": [
+      {
+        "card": "fireball",
+        "quantity": 2
+      },{
+        "card": "Mana Wyrm",
+        "quantity": 2
+      }
+    ]
+  }
+}]
