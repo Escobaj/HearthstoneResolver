@@ -47,3 +47,5 @@ bool ADamager::is_canAttack() const {
 void ADamager::set_canAttack(bool _canAttack) {
     ADamager::_canAttack = _canAttack;
 }
+
+ADamager::ADamager(const EventHandler &e) : ACard(e) {}

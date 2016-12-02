@@ -10,6 +10,8 @@
 class Spell : public ACard{
 
 public:
+    Spell(const EventHandler &e);
+
     State play(unsigned int order);
 
 };

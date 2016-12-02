@@ -21,7 +21,7 @@ class Player {
     -std::vector<ACard> _played
     -std::map<std::string, int> _variables
     -std::vector<ACard> _secrets
-    -AHeroPower & _heroPower
+    -AHeroPower *_heroPower
     -AWeapons *_weapons
     -int _maxMana
     -int _currentMana
@@ -110,7 +110,6 @@ abstract class AWeapon {
 abstract class AHeroPower {
     -int counterHeroPower
     -int currentCounter
-
 }
 
 note "All <b>minion</b> card \nextends from this class" as N1
@@ -173,6 +172,9 @@ enum CardType{
     PIRATES
     TOTEM
     GENERAL
+    SPELL
+    HERO_POWER
+    WEAPON
 }
 
 enum State{

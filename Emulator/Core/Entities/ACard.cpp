@@ -48,7 +48,7 @@ void ACard::set_id(unsigned int _id) {
     ACard::_id = _id;
 }
 
-const std::string &ACard::get_name() const {
+const std::string ACard::get_name() const {
     return _name;
 }
 
@@ -62,4 +62,8 @@ Class ACard::get_membership() const {
 
 void ACard::set_membership(Class _membership) {
     ACard::_membership = _membership;
+}
+
+ACard::ACard(EventHandler e) {
+    ACard::_event = e;
 }

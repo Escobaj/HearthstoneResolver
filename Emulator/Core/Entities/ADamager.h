@@ -16,6 +16,8 @@ private:
     unsigned int attackRemain;
     bool         _canAttack;
 public:
+    ADamager(const EventHandler &e);
+
     State play(unsigned int order);
 
     unsigned int get_defaultDamage() const;

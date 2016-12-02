@@ -23,3 +23,5 @@ unsigned int Weapon::get_currentDurability() const {
 void Weapon::set_currentDurability(unsigned int _currentDurability) {
     Weapon::_currentDurability = _currentDurability;
 }
+
+Weapon::Weapon(const EventHandler &e) : ADamager(e) {}

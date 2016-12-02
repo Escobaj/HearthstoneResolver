@@ -55,3 +55,5 @@ CardType Minion::get_type() const {
 void Minion::set_type(CardType _type) {
     Minion::_type = _type;
 }
+
+Minion::Minion(const EventHandler &e) : ADamager(e) {}

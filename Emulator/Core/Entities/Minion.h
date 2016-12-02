@@ -19,6 +19,8 @@ private:
     bool _divineShield;
     CardType _type;
 public:
+    Minion(const EventHandler &e);
+
     bool is_targetable() const;
 
     void set_targetable(bool _targetable);

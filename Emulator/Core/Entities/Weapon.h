@@ -12,6 +12,8 @@ private:
     unsigned int _defaultDurability;
     unsigned int _currentDurability;
 public:
+    Weapon(const EventHandler &e);
+
     State play(unsigned int order);
 
 

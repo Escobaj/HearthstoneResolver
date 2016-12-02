@@ -23,3 +23,5 @@ int HeroPower::get_currentUsage() const {
 void HeroPower::set_currentUsage(int _currentUsage) {
     HeroPower::_currentUsage = _currentUsage;
 }
+
+HeroPower::HeroPower(const EventHandler &e) : ACard(e) {}

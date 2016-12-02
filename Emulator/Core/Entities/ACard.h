@@ -10,6 +10,7 @@
 #include "../Type/Target.h"
 #include "../Type/Class.h"
 #include "../Type/State.h"
+#include "../Event/EventHandler.h"
 
 class ACard {
 private:
@@ -22,6 +23,8 @@ private:
     int          _currentCost;
 
 public:
+
+    ACard(EventHandler e);
 
     /**
      * return the cost original of this inherited card
@@ -53,7 +56,7 @@ public:
 
     unsigned int get_id() const;
 
-    const std::string &get_name() const;
+    const std::string get_name() const;
 
     Class get_membership() const;
 
@@ -65,6 +68,8 @@ protected:
     void set_membership(Class _membership);
 
     void set_id(unsigned int _id);
+
+    EventHandler _event;
 };
 
 

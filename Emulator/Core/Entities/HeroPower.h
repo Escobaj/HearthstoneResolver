@@ -13,7 +13,9 @@ class HeroPower : public ACard {
         int _remainUsage;
         int _currentUsage;
     public:
-        State play(unsigned int order);
+    HeroPower(const EventHandler &e);
+
+    State play(unsigned int order);
 
     int get_remainUsage() const;
 
