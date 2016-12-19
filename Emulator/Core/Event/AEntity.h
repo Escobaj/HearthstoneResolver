@@ -12,24 +12,21 @@
 #include "../Entities/Weapon.h"
 
 class AEntity {
-private:
-    ACard *_reference;
-public:
-    ACard *get_reference() const;
-
-private:
-    Minion *_minion;
-    Spell *_spell;
-    Weapon *_weapon;
-    HeroPower *_heroPower;
 public:
     int _order;
     EntityType _type;
 
-    AEntity(Minion *minion, int order);
-    AEntity(Spell *spell, int order);
-    AEntity(Weapon *weapon, int order);
-    AEntity(HeroPower *heroPower, int order);
+    AEntity(Minion *minion);
+    AEntity(Spell *spell);
+    AEntity(Weapon *weapon);
+    AEntity(HeroPower *heroPower);
+    ACard *get_reference() const;
+private:
+    ACard *_reference;
+    Minion *_minion;
+    Spell *_spell;
+    Weapon *_weapon;
+    HeroPower *_heroPower;
 };
 
 

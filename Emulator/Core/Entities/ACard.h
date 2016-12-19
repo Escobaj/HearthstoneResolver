@@ -15,6 +15,9 @@
 class ACard {
 private:
     std::string  _name;
+    std::string  _description;
+
+private:
     Target       _target;
     Class        _membership;
     unsigned int _id;
@@ -62,6 +65,9 @@ public:
 
     virtual State play(unsigned int order) = 0;
 
+    const std::string &get_description() const;
+
+    void set_description(const std::string &_description);
 protected:
     void set_name(const std::string &_name);
 

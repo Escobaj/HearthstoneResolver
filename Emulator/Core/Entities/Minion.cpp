@@ -56,4 +56,10 @@ void Minion::set_type(CardType _type) {
     Minion::_type = _type;
 }
 
-Minion::Minion(const EventHandler &e) : ADamager(e) {}
+Minion::Minion(const EventHandler &e) : ADamager(e) {
+    this->set_targetable(true);
+    this->set_imun(false);
+    this->set_stealth(false);
+    this->set_taunt(false);
+    this->set_divineShield(false);
+}

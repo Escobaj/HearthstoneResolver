@@ -9,8 +9,10 @@ Weapon1::Weapon1(const EventHandler &e) : Weapon(e) {
     this->set_defaultCost(6);
     this->set_name("Weapon 1");
     this->set_membership(Class::WARRIOR);
+    this->set_description("blah blah, c'est une arme, blah blah");
     this->set_id(1);
 }
 
 void Weapon1::init() {
+
 }

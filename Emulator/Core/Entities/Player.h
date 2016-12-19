@@ -9,42 +9,43 @@
 #include <map>
 #include "Minion.h"
 #include "Weapon.h"
+#include "../Event/AEntity.h"
 
 class Player {
 private:
-    std::vector<ACard *> _hands;
-    std::vector<Minion *> _board;
-    std::vector<ACard *> _deck;
-    std::vector<ACard *> _played;
+    std::vector<AEntity *> _hands;
+    std::vector<AEntity *> _board;
+    std::vector<AEntity *> _deck;
+    std::vector<AEntity *> _played;
     std::map<std::string, int> attribute;
-    std::vector<ACard *> _secret;
+    std::vector<AEntity *> _secret;
     Weapon *_weapon;
     unsigned int _maxMana;
     unsigned int _currentMana;
 public:
-    const std::vector<ACard *> &get_hands() const;
+    const std::vector<AEntity *> &get_hands() const;
 
-    void set_hands(const std::vector<ACard *> &_hands);
+    void set_hands(const std::vector<AEntity *> &_hands);
 
-    const std::vector<Minion *> &get_board() const;
+    const std::vector<AEntity *> &get_board() const;
 
-    void set_board(const std::vector<Minion *> &_board);
+    void set_board(const std::vector<AEntity *> &_board);
 
-    const std::vector<ACard *> &get_deck() const;
+    const std::vector<AEntity *> &get_deck() const;
 
-    void set_deck(const std::vector<ACard *> &_deck);
+    void set_deck(const std::vector<AEntity *> &_deck);
 
-    const std::vector<ACard *> &get_played() const;
+    const std::vector<AEntity *> &get_played() const;
 
-    void set_played(const std::vector<ACard *> &_played);
+    void set_played(const std::vector<AEntity *> &_played);
 
     const std::map<std::string, int> &getAttribute() const;
 
     void setAttribute(const std::map<std::string, int> &attribute);
 
-    const std::vector<ACard *> &get_secret() const;
+    const std::vector<AEntity *> &get_secret() const;
 
-    void set_secret(const std::vector<ACard *> &_secret);
+    void set_secret(const std::vector<AEntity *> &_secret);
 
     Weapon *get_weapon() const;
 
@@ -58,8 +59,9 @@ public:
 
     void set_currentMana(unsigned int _currentMana);
 
-public:
     State play(unsigned int order);
+
+    void addCard(AEntity *pEntity);
 };
 
 #endif //HEARTHSTONERESOLVER_PLAYER_H

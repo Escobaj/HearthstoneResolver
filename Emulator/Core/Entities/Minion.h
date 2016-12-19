@@ -20,29 +20,17 @@ private:
     CardType _type;
 public:
     Minion(const EventHandler &e);
-
     bool is_targetable() const;
-
     void set_targetable(bool _targetable);
-
     bool is_imun() const;
-
     void set_imun(bool _imun);
-
     bool is_stealth() const;
-
     void set_stealth(bool _stealth);
-
     bool is_taunt() const;
-
     void set_taunt(bool _taunt);
-
     bool is_divineShield() const;
-
     void set_divineShield(bool _divineShield);
-
     CardType get_type() const;
-
     void set_type(CardType _type);
 
 public:

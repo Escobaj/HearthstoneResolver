@@ -67,3 +67,11 @@ void ACard::set_membership(Class _membership) {
 ACard::ACard(EventHandler e) {
     ACard::_event = e;
 }
+
+const std::string &ACard::get_description() const {
+    return _description;
+}
+
+void ACard::set_description(const std::string &_description) {
+    ACard::_description = _description;
+}

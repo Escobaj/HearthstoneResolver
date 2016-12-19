@@ -186,7 +186,7 @@ enum State{
 newpage
 
 class EventHandler{
-    -Game gameInstance
+    -GameManager gameInstance
     -bool endGame
     #vector<EventType> _queue
     #vector<...> _...
@@ -195,7 +195,7 @@ class EventHandler{
     +Player *isWin()
 }
 
-abstract class Game {
+abstract class GameManager {
     +Player _player1
     +Player _player2
     +int _turn

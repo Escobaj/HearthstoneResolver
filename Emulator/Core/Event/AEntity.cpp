@@ -4,36 +4,32 @@
 
 #include "AEntity.h"
 
-AEntity::AEntity(Minion *minion, int order) {
+AEntity::AEntity(Minion *minion) {
     _type = EntityType::MINION;
-    _order = order;
     _reference = _minion = minion;
     _spell = NULL;
     _weapon = NULL;
     _heroPower = NULL;
 }
 
-AEntity::AEntity(Spell *spell, int order) {
+AEntity::AEntity(Spell *spell) {
     _type = EntityType::SPELL;
-    _order = order;
     _reference = _spell = spell;
     _minion = NULL;
     _heroPower = NULL;
     _weapon = NULL;
 }
 
-AEntity::AEntity(Weapon *weapon, int order) {
+AEntity::AEntity(Weapon *weapon) {
     _type = EntityType::WEAPON;
-    _order = order;
     _reference = _weapon = weapon;
     _minion = NULL;
     _heroPower = NULL;
     _spell = NULL;
 }
 
-AEntity::AEntity(HeroPower *heroPower, int order) {
+AEntity::AEntity(HeroPower *heroPower) {
     _type = EntityType::HERO_POWER;
-    _order = order;
     _heroPower = heroPower;
     _minion = NULL;
     _spell = NULL;
@@ -43,4 +39,3 @@ AEntity::AEntity(HeroPower *heroPower, int order) {
 ACard *AEntity::get_reference() const {
     return _reference;
 }
-
