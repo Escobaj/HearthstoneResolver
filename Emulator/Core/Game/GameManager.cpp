@@ -11,3 +11,8 @@ GameManager::GameManager() {
 Player * GameManager::get_player() {
     return _player;
 }
+
+void GameManager::shuffleDecks() {
+    this->_player[0].shuffleDeck();
+    this->_player[1].shuffleDeck();
+}

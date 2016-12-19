@@ -13,6 +13,7 @@ bool Api::isEnd() {
 
 void Api::startGame() {
     this->initFromFile("tst");
+    this->_game.shuffleDecks();
 }
 
 const GameManager &Api::get_game() const {

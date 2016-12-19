@@ -2,6 +2,7 @@
 // Created by escoba_j on 30/11/2016.
 //
 
+#include <algorithm>
 #include "Player.h"
 
 State Player::play(unsigned int order) {
@@ -82,4 +83,10 @@ void Player::set_currentMana(unsigned int _currentMana) {
 
 void Player::addCard(AEntity *pEntity) {
     this->_deck.push_back(pEntity);
+}
+
+void Player::shuffleDeck() {
+    std::random_shuffle(_deck.begin(), _deck.end(), [](int i){
+        return std::rand() % i;
+    });
 }

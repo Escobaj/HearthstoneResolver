@@ -62,6 +62,8 @@ public:
     State play(unsigned int order);
 
     void addCard(AEntity *pEntity);
+
+    void shuffleDeck();
 };
 
 #endif //HEARTHSTONERESOLVER_PLAYER_H

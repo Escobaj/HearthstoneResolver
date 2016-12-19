@@ -20,18 +20,11 @@ public:
     bool interpret(std::string str);
     void initFromFile(std::string str);
     void addCardToPlayer(int playerId, AEntity *entity);
+    int getRemainCard(int player, bool verbose = false);
 
 private:
     GameManager _game;
     EventHandler _event;
-
-    /**
-     *
-     * @param player
-     * @param verbose
-     * @return
-     */
-    int getRemainCard(int player, bool verbose = false);
 
 };
 

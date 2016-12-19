@@ -12,6 +12,9 @@ class GameManager {
 public:
     GameManager();
     Player * get_player();
+
+    void shuffleDecks();
+
 private:
     bool _end;
     Player _player[2];
