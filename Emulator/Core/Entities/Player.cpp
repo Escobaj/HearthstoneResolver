@@ -90,3 +90,34 @@ void Player::shuffleDeck() {
         return std::rand() % i;
     });
 }
+
+void Player::draw(int i) {
+    for (int j = 0; j < i; ++j) {
+        if (this->_deck.size()) {
+            AEntity *tmp = this->_deck.back();
+            this->_hands.push_back(tmp);
+            this->_deck.pop_back();
+        } else if (this->_deck.size() == 10) {
+            AEntity *tmp = this->_deck.back();
+            this->_played.push_back(tmp);
+            this->_deck.pop_back();
+        } else {
+            //todo: gestion de la fatigue
+        }
+    }
+}
+
+bool Player::summon(int id, bool verbose){
+/*    AEntity *tmp = this->_hands[id];
+    switch(tmp->_type){
+        case EntityType::MINION:
+
+        break;
+        default:
+        break:
+    }
+
+    if (){
+        tmp->get_reference()
+    } */
+}

@@ -64,6 +64,10 @@ public:
     void addCard(AEntity *pEntity);
 
     void shuffleDeck();
+
+    void draw(int i);
+
+    bool summon(int id, bool verbose);
 };
 
 #endif //HEARTHSTONERESOLVER_PLAYER_H

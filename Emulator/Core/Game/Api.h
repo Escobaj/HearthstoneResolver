@@ -21,11 +21,13 @@ public:
     void initFromFile(std::string str);
     void addCardToPlayer(int playerId, AEntity *entity);
     int getRemainCard(int player, bool verbose = false);
+    const std::vector<AEntity *> & getBoardPlayer(int player, bool verbose = false);
+    const std::vector<AEntity *> & getCurrentHand(bool verbose = false);
+    void endTurn();
 
 private:
     GameManager _game;
     EventHandler _event;
-
 };
 
 
