@@ -24,7 +24,7 @@ void GameManager::start() {
 }
 
 int GameManager::get_playerTurn() const {
-    $
+    return _turn;
 }
 
 void GameManager::set_playerTurn(int _playerTurn) {
