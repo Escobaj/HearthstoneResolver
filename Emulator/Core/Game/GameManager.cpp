@@ -6,6 +6,7 @@
 
 GameManager::GameManager() {
     _end = false;
+    _turn = 0;
 }
 
 Player * GameManager::get_player() {
