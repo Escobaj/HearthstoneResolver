@@ -1,0 +1,19 @@
+{
+  "name": "hs",
+  "version": "1.0.0",
+  "description": "w",
+  "main": "index.js",
+  "scripts": {
+    "build": "php build.php"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Escobaj/HearthstoneResolver.git"
+  },
+  "author": "Joffrey Escobar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Escobaj/HearthstoneResolver/issues"
+  },
+  "homepage": "https://github.com/Escobaj/HearthstoneResolver#readme"
+}
