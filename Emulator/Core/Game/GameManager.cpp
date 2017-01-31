@@ -6,6 +6,7 @@
 
 GameManager::GameManager() {
     _end = false;
+    _turn = 0;
 }
 
 Player * GameManager::get_player() {
@@ -24,7 +25,7 @@ void GameManager::start() {
 }
 
 int GameManager::get_playerTurn() const {
-    $
+    return _turn;
 }
 
 void GameManager::set_playerTurn(int _playerTurn) {
